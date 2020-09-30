@@ -14,5 +14,17 @@ public class JwtTokenUtil {
         DecodedJWT jwt = verifier.verify(token);
         return jwt.getClaim("userId").asString();
     }
+
+    public static String getJwtToken(String userId) {
+        //创建加密算法
+        Algorithm algorithm = Algorithm.HMAC256(AppConfig.jwtSecret);
+        String token = JWT.create()
+                //签发者
+                .withIssuer("auth0")
+                //自定义KV
+                .withClaim("userId", userId)
+                .sign(algorithm);
+        return token;
+    }
 }
 

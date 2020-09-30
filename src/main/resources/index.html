@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var websocket = new WebSocket("ws://127.0.0.1:7788/websocket?userId=123");
+        websocket.onopen = function() {
+            var token = {};
+            token.type = "login";
+            token.jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6IkEwMSJ9.hWwmEKP50w68ctA-rXZ5Eg-KA5UCxI-lujAcrZsAXo4";
+
+            websocket.send(JSON.stringify(token));
+            console.log("websocket connected.")
+        }
+
+        websocket.onmessage = function (evt) {
+            var data = evt.data;
+            console.log(data);
+        };
+
+        websocket.onclose = function() {
+            console.log("websocket closed.")
+        };
+
+        websocket.onerror = function (e) {
+            console.log(e);
+        }
+
+        function send() {
+            websocket.send("hello");
+        }
+    </script>
+</head>
+<body>
+    <button value="发送数据" onclick="send()">发送数据</button>
+</body>
+</html>
