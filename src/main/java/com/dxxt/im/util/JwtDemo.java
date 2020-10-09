@@ -20,7 +20,7 @@ public class JwtDemo {
                     //签发者
                     .withIssuer("auth0")
                     //自定义KV
-                    .withClaim("userId", "11111111000000")
+                    .withClaim("userId", "A02")
                     .sign(algorithm);
             System.out.println(token);
         } catch (JWTCreationException exception){

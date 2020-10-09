@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript">
-        var websocket = new WebSocket("ws://127.0.0.1:7788/websocket?userId=123");
+        var websocket = new WebSocket("ws://192.168.80.110:7788/websocket?userId=123");
         websocket.onopen = function() {
             var token = {};
             token.type = "login";
-            token.jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6IkEwMSJ9.hWwmEKP50w68ctA-rXZ5Eg-KA5UCxI-lujAcrZsAXo4";
+            //token.jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6IkEwMSJ9.hWwmEKP50w68ctA-rXZ5Eg-KA5UCxI-lujAcrZsAXo4";
+            token.jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6IkEwMiJ9.FzRkFQnWhlbo6Gh2LUzoqFhVvEAvinK9XiWkRhLODoM";
 
             websocket.send(JSON.stringify(token));
             console.log("websocket connected.")
